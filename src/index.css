@@ -1,13 +1,71 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+@import url('./Resources/paradizo.css');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --background: #2d2a27;
+  --backgroundalt: #574e48;
+  --ftgold: #ce9970;
+  --ftlgold: #f9eade;
+  --ftmgold: #c7ab9b;
+  --ftgray: #d7d7d7;
+  --red: #d15e67;
+  --inter: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*[class*=" bi-"]::before {
+  display: inline-block;
+  vertical-align: -.160em !important;
+}*/
+
+::selection { 
+  background: var(--background);
+  color: #fff;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--background);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -o-crisp-edges;
+  max-width: 1920px;
+  margin: auto;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mmopened {
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .mobonly {
+    display: none;
+  }
+}
+@media (max-width: 1023px) {
+  .pconly {
+    display: none;
+  }
 }

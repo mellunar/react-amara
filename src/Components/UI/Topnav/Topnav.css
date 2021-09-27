@@ -1,0 +1,308 @@
+.topnav {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  transition: top 200ms;
+}
+[data-scroll="up"]{
+  top: 0px;
+}
+[data-scroll="down"]{
+  top: -60px;
+}
+.topnav-topsection {
+  max-width: 1920px;
+  height: 60px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+  background: var(--background);
+  padding: 0 40px;
+  color: var(--ftmgold);
+}
+.topnav-topsection ul {  
+  list-style: none;
+}
+.topnav-logolink {
+  height: 40px;
+}
+.topnav-logo {
+  height: 40px;
+  width: auto;
+}
+.topnav-navlist {
+  display: flex;
+  color: var(--ftmgold);
+}
+.topnav-mobmenu-button {
+  border: unset;
+  background: unset;
+  font-size: 28px;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  color: var(--ftmgold);
+}
+.topnav-navlist li {
+  overflow: hidden;
+}
+.topnav-navlist a:not(.topnav-sublist a), .topnav-userlist button {
+  padding: 1.2rem;
+  display: block;
+}
+.topnav-navlist a, .topnav-userlist button, .topnav-mobonly-menu a {
+  color: var(--ftmgold);
+}
+.topnav-navlist a:hover, .topnav-userlist button:hover, .topnav-mobmenu-button:hover {
+  color: var(--ftlgold);
+}
+.topnav-sublist {
+  overflow: hidden;
+}
+.topnav-userlist {
+  display: flex;
+}
+.topnav-userlist button {
+  background: unset;
+  border: unset;
+  font-size: 22px;
+  padding: 1rem;
+}
+.topnav-search-icon {
+  font-size: 18px !important;
+  padding: 1.2rem !important;
+}
+.topnav-cart-button {
+  position: relative;
+}
+.topnav-cart-size {
+  position: absolute;
+  z-index: 2;
+  color: var(--background);
+  background: var(--red);
+  font-size: 10px;
+  font-family: var(--inter);
+  font-weight: 600;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 2px solid var(--background);
+  top: 12px;
+  right: 11px;
+}
+.topnav-cart-button:hover .topnav-cart-size {
+  background: var(--ftlgold);
+}
+.topnav-search-input {
+  background: var(--backgroundalt);
+  border: unset;
+  height: 32px;
+  width: 270px;
+  padding: 5px;
+  font-size: 18px;
+  font-family: var(--inter);
+  font-weight: 400;
+  color: #fff;
+  border-radius: 6px;
+}
+.topnav-search-input:focus {
+  outline: 2px solid var(--ftmgold);
+}
+
+@media (min-width: 1024px) {
+  .mobonly {
+    display: none;
+  }
+  .topnav-desktop-search {
+    width: 100%;
+    height: 60px;
+    margin: auto;
+    background: #221f1d;
+    position: fixed;
+    left: 0px;
+    z-index: 1000;
+    transition: top .35s cubic-bezier(.29, .63, .44, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  [data-pcsearch='closed'] {
+    top: -60px;
+  }
+  [data-pcsearch='opened'] {
+    top: 0px;
+  }
+  .topnav-desktop-searchbox {
+    width: 700px;
+    height: 60%;
+    display: flex;
+    z-index: 1001;
+  }
+  .topnav-desktop-searchbox label {
+    margin-right: 10px;
+  }
+  .topnav-desktop-searchbox button {
+    margin-left: 10px;
+    background: unset;
+    border: unset;
+    color: inherit;
+    font-size: 30px;
+  }
+  .topnav-desktop-searchbox :is(label, button) {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .topnav-search-input {
+    width: 100%;
+    height: 36px;
+  }
+  .topnav-sublist {
+    position: absolute;
+    top: 60px;
+    padding: .4rem;
+    background: var(--ftmgold);
+    /*border: 1px dashed var(--ftmgold);
+    outline: 1px solid var(--background);*/
+  }
+  .topnav-sublist a {
+    display: block;
+    padding: .5rem 4rem .5rem .5rem;
+    color: #221f1d;
+  }
+  [data-active-sub='closed'] {
+    display: none;
+  }
+  [data-active-sub='opened'] {
+    display: block;
+  }
+}
+@media (max-width: 1023px) {
+  [data-opacity='show']{
+    opacity: 1;
+  }
+  [data-opacity='hide']{
+    opacity: 0;
+  }
+  .pconly {
+    display: none;
+  }
+  .topnav-topsection {
+    padding: 0 15px;
+  }
+  .topnav-logolink {
+    height: 35px;
+  }
+  .topnav-logo {
+    height: 35px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .topnav-menu-opened {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 60px);
+    background: rgba(0,0,0,.25);
+  }
+  .topnav-mobmenu-navlist {
+    position: absolute;
+    top: 60px;
+    background: var(--background);
+    width: 300px;
+    z-index: 998;
+    transition: left .35s cubic-bezier(.29, .63, .44, 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 60px);
+  }
+  [data-mobmenu='closed'] {
+    left: -100%;
+  }
+  [data-mobmenu='opened'] {
+    left: 0px;
+  }
+  .topnav-mobmenu-search {
+    margin-left: 15px;
+    margin-top: 15px;
+    position: relative;
+  }
+  .topnav-mobmenu-search label {
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    color: #b1adaa;
+    font-size: 14px;
+  }
+  .topnav-navlist, .topnav-mobonly-menu {    
+    display: block;
+    padding: .5rem 0 .5rem 15px;
+  }
+  .topnav-navlist a, .topnav-sublist a, .topnav-mobonly-menu a {
+    display: inline-block;
+    padding: .6rem !important;
+    font-size: 20px;
+  }
+  .topnav-mobonly-menu {    
+    transition: opacity .35s cubic-bezier(.29, .63, .44, 1);
+  }
+  .topnav-navlist a:not(.topnav-sublist a) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topnav-moblist-back {
+    display: flex;
+    align-items: center;
+    padding: .6rem;
+    padding-left: 0;
+    margin-left: -.6rem;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .topnav-navlist button {
+    border: unset;
+    background: unset;
+    width: 32px;
+    color: var(--ftmgold);
+    font-size: 20px;
+  }
+  .topnav-sublist {
+    background: var(--background);
+    position: absolute;
+    top: 0;
+    padding-left: 15px;
+    width: 300px;
+    transition: left .35s cubic-bezier(.29, .63, .44, 1);
+    bottom: 0;
+  }
+  [data-active-sub='closed'] {
+    left: 300px;
+  }
+  [data-active-sub='opened'] {
+    left: 0px;
+  }
+  .topnav-userlist button {
+    padding: .8rem;
+  }
+  .topnav-cart-size {
+    top: 9px;
+    right: 7px;
+  }
+  .topnav-search-input {
+    padding-left: 25px;
+  }
+}

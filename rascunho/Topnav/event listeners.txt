@@ -1,0 +1,2 @@
+window.onresize = () => {if(openMenu === true){setOpenMenu(false)}};
+  window.onmousedown = (e) => {if(e.target !== searchInput.current && openSearch === true){setOpenSearch(false)}};

@@ -1,0 +1,20 @@
+/* 
+THIS FONT IS FOR PERSONAL USE ONLY
+AND CANNOT BE REDISTRIBUTED
+COMMERCIAL LICENSE CAN BE BOUGHT ON
+https://www.pixelsurplus.com/shop
+*/
+@font-face {
+    font-family: 'Paradizo';
+    src: url('paradizo-regular-webfont.woff2') format('woff2'),
+         url('paradizo-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Paradizo';
+    src: url('paradizo-oblique-webfont.woff2') format('woff2'),
+         url('paradizo-oblique-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}

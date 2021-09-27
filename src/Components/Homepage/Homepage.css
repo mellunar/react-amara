@@ -1,0 +1,9 @@
+.homepage-header {
+  padding-top: 60px;
+  background: var(--background);
+  color: var(--ftmgold);
+  overflow: hidden;
+}
+.page-main {
+  padding: 3vw;
+}
