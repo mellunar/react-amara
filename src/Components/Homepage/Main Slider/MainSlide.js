@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './MainSlider.css';
+import Button from "Components/UI/Button/Button";
 
 const MainSlide = ({item}) => {
 
@@ -13,7 +14,7 @@ const MainSlide = ({item}) => {
       </div>
       <div className='main-slide-info-container'>
         <p className='main-slide-subtitle'>{item.desc}</p>
-        <Link to='/' className='main-slide-button' onDragStart={(e) => e.preventDefault()}>Comprar</Link>
+        <Button component={Link} to='/' className='main-slide-button' onDragStart={(e) => e.preventDefault()}>Comprar</Button>
       </div>
       
     </article>

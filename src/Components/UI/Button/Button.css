@@ -1,0 +1,19 @@
+.ui-button {
+  padding: .5rem 1rem;
+  background: var(--ftmgold);
+  color: var(--background);
+  cursor: pointer;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  border: unset;
+}
+.ui-button:hover {
+  background: var(--ftlgold);
+}
+.ui-button:disabled {
+  background: var(--ftgray);
+}
+.table {
+  display: table;
+}

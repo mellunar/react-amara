@@ -1,5 +1,5 @@
 import React from "react";
-import './MainSlider.css';
+import './Carousel.css';
 
 const ButtonGroup = ({ next, previous, ...rest }) => {
   const {
@@ -7,15 +7,9 @@ const ButtonGroup = ({ next, previous, ...rest }) => {
   } = rest;
 
   return (
-    <div className="carousel-button-group">
-      <button aria-label="Go to previous slide"
-      className={currentSlide === 0 ? "disable" : "react-multiple-carousel__arrow react-multiple-carousel__arrow--left"}
-      onClick={() => previous()}>
-      </button>
-      <button aria-label="Go to next slide" 
-      className={currentSlide === totalItems - slidesToShow ? "disable" : "react-multiple-carousel__arrow react-multiple-carousel__arrow--right"}
-      onClick={() => next()}>
-      </button>
+    <div className="product-carousel-arrow-group">
+      <button className={`product-slide-arrow product-slide-left-arrow ${currentSlide === 0 ? 'product-slide-arrow-disabled' : ''}`} onClick={() => previous()}><i className="bi bi-chevron-left" aria-label="Voltar" /></button>
+      <button className={`product-slide-arrow product-slide-right-arrow ${currentSlide === totalItems - slidesToShow ? 'product-slide-arrow-disabled' : ''}`} onClick={() => next()}><i className="bi bi-chevron-right" aria-label="Avançar" /></button>
     </div>
 );
 };

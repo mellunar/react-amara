@@ -103,7 +103,7 @@
 }
 .topnav-search-input {
   background: var(--backgroundalt);
-  border: unset;
+  border: 1px solid var(--backgroundalt);
   height: 32px;
   width: 270px;
   padding: 5px;
@@ -114,7 +114,8 @@
   border-radius: 6px;
 }
 .topnav-search-input:focus {
-  outline: 2px solid var(--ftmgold);
+  border: 1px solid var(--ftmgold);
+  outline: unset;
 }
 
 @media (min-width: 1024px) {
