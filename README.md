@@ -1,1 +1,1 @@
-mellunaramara.netlify.app
+amara-mellunar.netlify.app
