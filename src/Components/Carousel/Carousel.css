@@ -108,7 +108,7 @@
   }
   .product-slide-right-arrow {
     position: absolute;
-    right: 0px;
+    right: 5px;
   }
 }
 @media (hover: none) and (min-width: 700px) {

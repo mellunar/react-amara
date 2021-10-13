@@ -5,15 +5,23 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [userEmail, setUserEmail] = useState('');
+  const [valid, setValid] = useState(null);
+
+  function onBlur(e){
+    // eslint-disable-next-line
+    const validEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    validEmail.test(e.target.value) === true ? setValid(null) : setValid('Insira um email válido');
+  };
 
   return(
     <footer className='ui-footer'>
       <div className='ui-footer-newsletter'>
         <label htmlFor='newsletter'>Receba ofertas e novidades por e-mail</label>
         <div className='ui-footer-newsletter-form'>
-          <input type='email' id='newsletter' name='newsletter' className='ui-footer-input' onChange={(e)=>setUserEmail(e.target.value)} placeholder='Digite seu email' />
-          <Button component='button' onClick={()=>console.log(userEmail)}>Cadastrar</Button>
+          <input type='email' id='newsletter' name='newsletter' className='ui-footer-input' onChange={(e)=>setUserEmail(e.target.value)} onBlur={onBlur} placeholder='Digite seu email' required />
+          <Button component='button' onClick={()=>console.log(userEmail)} disabled={valid !== 'Insira um email válido' ? false : true}>Cadastrar</Button>
         </div>
+        {valid && <p className='ui-footer-newsletter-error'>{valid}</p>}
       </div>
       <div className='ui-footer-main'>
         <div className='ui-footer-section'>

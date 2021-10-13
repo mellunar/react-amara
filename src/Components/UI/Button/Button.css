@@ -13,6 +13,7 @@
 }
 .ui-button:disabled {
   background: var(--ftgray);
+  cursor: auto;
 }
 .table {
   display: table;

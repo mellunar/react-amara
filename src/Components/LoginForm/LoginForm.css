@@ -1,8 +1,8 @@
 .login-form-container {
   width: 100%;
   font-size: 16px;
-  height: 56px;
   position: relative;
+  margin-bottom: 10px;
 }
 .login-form ::placeholder {
   color: transparent;
@@ -15,9 +15,6 @@
   padding: 5px;
   border: 2px solid var(--ftmgold);
   font-size: 16px;
-  position: absolute;
-  top: 0;
-  left: 0;
   background: transparent;
   z-index: 2;
 }
@@ -44,4 +41,9 @@
 .login-form-button {
   display: block;
   width: 100%;
+}
+.login-form-error {
+  margin-top: 5px;
+  text-align: center;
+  color: var(--error);
 }

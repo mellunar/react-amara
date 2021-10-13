@@ -27,6 +27,12 @@
 .ui-footer-newsletter-form {
   margin-top: 10px;
 }
+.ui-footer-newsletter-error {
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
+  color: var(--red);
+}
 .ui-footer-input {
   font-size: 16px;
   padding: .4rem;

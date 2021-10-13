@@ -45,6 +45,11 @@
   background: #fff;
 }
 
+@media (max-width: 1023px) {
+  .login-modal-container {
+    max-height: 100%;
+  }
+}
 @media (min-width: 769px) {
   .login-modal-container {
     width: 400px;
@@ -55,6 +60,6 @@
 }
 @media (max-width: 768px) {
   .login-modal-container {
-    width: 100%;
+    width: 100vw;
   }
 }
