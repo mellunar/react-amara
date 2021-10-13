@@ -3,8 +3,15 @@ import './Carousel.css';
 import Carousel from "react-multi-carousel";
 import ProductSlide from "./ProductSlide";
 import ButtonGroup from "./ButtonGroup";
+import LoadingSlide from "./LoadingSlide";
 
 const ProductCarousel = ({heading, productArray}) => {
+  let dummy = [];
+  
+  for(let i=1; i<6; i++){
+    dummy.push(i)
+  };  
+
   const responsive = {
     mobileSmall: {
       breakpoint: { max: 599, min: 0 },
@@ -31,9 +38,9 @@ const ProductCarousel = ({heading, productArray}) => {
   return(
     <section className='product-carousel'>
       {heading && <h2 className='product-carousel-heading'>{heading}</h2>}
-      <Carousel responsive={responsive} minimumTouchDrag={80} customButtonGroup={<ButtonGroup />} renderButtonGroupOutside arrows={false}>
-        {productArray.map((slide,i) => <ProductSlide source={slide} key={i} />)}
-      </Carousel>
+      {productArray !== undefined && <Carousel responsive={responsive} minimumTouchDrag={80} customButtonGroup={<ButtonGroup />} renderButtonGroupOutside arrows={false}>
+        {productArray !== null && productArray.length > 0 ? productArray.map((slide,i) => <ProductSlide product={slide} key={i} />) : dummy.map((slide) => <LoadingSlide key={slide} onError={productArray} />)}
+      </Carousel>}
     </section>
   )
 };

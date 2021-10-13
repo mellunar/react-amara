@@ -17,3 +17,7 @@
 .table {
   display: table;
 }
+.ui-button-light:hover {
+  background: var(--background);
+  color: #fff;
+}

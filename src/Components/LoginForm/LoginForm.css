@@ -1,0 +1,47 @@
+.login-form-container {
+  width: 100%;
+  font-size: 16px;
+  height: 56px;
+  position: relative;
+}
+.login-form ::placeholder {
+  color: transparent;
+}
+.login-form-input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  padding: 5px;
+  border: 2px solid var(--ftmgold);
+  font-size: 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 2;
+}
+.login-form-input:focus {
+  border-color: var(--background);
+}
+.login-form-label {
+  display: block;
+  transition: 300ms;
+  cursor: text;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+.login-form-input:focus + .login-form-label, .login-form-input:not(:placeholder-shown) + .login-form-label {
+  top: -8px;
+  font-size: 13px;
+  font-weight: 500;
+  background: #fff;
+  padding: 1px;
+  z-index: 3;
+}
+.login-form-button {
+  display: block;
+  width: 100%;
+}

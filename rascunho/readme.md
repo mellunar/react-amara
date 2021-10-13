@@ -1,0 +1,1 @@
+Apesar de possuir arquivos que não serão usados, serão mantidos no repositório para consultas futuras

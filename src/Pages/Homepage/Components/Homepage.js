@@ -2,12 +2,12 @@ import React from "react";
 import './Homepage.css';
 import MainSlider from "./Main Slider/MainSlider";
 import { MainSlides } from "./Main Slider/MainSlides";
-import ProductCarousel from "Components/UI/Carousel/ProductCarousel";
+import ProductCarousel from "Components/Carousel/ProductCarousel";
 import HomeGrid from "./Home Grid/HomeGrid";
 
 const FinalHomepage = () => {
   let items = [];
-  for(let i=0;i<9;i++){
+  for(let i=1;i<9;i++){
     items.push({
       title: 'Blusa cropped manga curta com estampa de mão caveira',
       price: 59.9,

@@ -1,7 +1,9 @@
-import React, {useEffect,useState,useRef} from "react";
+import React, {useContext,useEffect,useState,useRef} from "react";
 import { Link } from "react-router-dom";
 import './Topnav.css';
 import { NavItems } from "./Navmenu";
+import logoAmara from 'Resources/amara-logo.png';
+import { LoginContext } from "Contexts/LoginContext";
 
 const Topnav = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -11,6 +13,7 @@ const Topnav = () => {
   const [pageScroll, setPageScroll] = useState('up');
   const searchInput = useRef(null);
   const htmlBody = document.querySelector('body');
+  const {setModalStatus} = useContext(LoginContext);
 
   useEffect(()=>{
     openMenu === true ? htmlBody.classList.add('mmopened') : htmlBody.classList.remove('mmopened');
@@ -50,7 +53,12 @@ const Topnav = () => {
       setPageScroll("down");
     }
     setPrevScrollpos(currentScrollPos);
-  } 
+  };
+
+  function openLoginModal(){
+    setOpenMenu(false);
+    setModalStatus(true);
+  };
 
   return(
     <header className='topnav' data-scroll={pageScroll}>
@@ -59,7 +67,7 @@ const Topnav = () => {
           {openMenu === false ? <i className="bi bi-list" /> : <i className="bi bi-x" />}
         </button>
         <Link to='/' className='topnav-logolink'>
-          <img className='topnav-logo' alt='logo Amara' src='https://bn02pap001files.storage.live.com/y4mW7JffflW9vxqS0MOrwClETZhfzG9h23ScafruYVOcaQleijrx9nw972NiwbtLzQFUefDVVWTHbtRQbxgACrTpKdbKr_ythZuC-1EIkj5Cr_EID5Z3UPJn3vK_S6SrmA6IoqZ20U9pUIlOy3pTzMPZVuUM-N87wnwnPkKCwnnZVFkT5lPlLEWSVz76XBF0Dso?width=233&height=60&cropmode=none' />
+          <img className='topnav-logo' alt='logo Amara' src={logoAmara} />
         </Link>
         <div className='topnav-mobmenu-navlist' data-mobmenu={openMenu === false ? 'closed' : 'opened'}>
           <div className='mobonly topnav-mobmenu-search'>
@@ -80,7 +88,7 @@ const Topnav = () => {
             ))}
           </ul>
           <ul className='mobonly topnav-mobonly-menu' data-opacity={!activeSub ? 'show' : 'hide'}>
-            <li><Link to='/'><i className="bi bi-person-circle" aria-hidden /> Fazer login</Link></li>
+            <li><button onClick={()=>openLoginModal()}><i className="bi bi-person-circle" aria-hidden /> Fazer login</button></li>
             <li><Link to='/'>Criar conta</Link></li>
             <li><Link to='/'>Contato</Link></li>
             <li><Link to='/'>Sobre</Link></li>
@@ -88,7 +96,7 @@ const Topnav = () => {
         </div>
         <ul className='topnav-userlist'>
           <li className='pconly'><button className='topnav-search-icon' onClick={()=>{setOpenSearch(true); searchInput.current.focus()}}><i className="bi bi-search" aria-label='Pesquisar' /></button></li>
-          <li className='pconly'><button><i className="bi bi-person-circle" aria-label='Usuário' /></button></li>
+          <li className='pconly'><button onClick={()=>openLoginModal()}><i className="bi bi-person-circle" aria-label='Usuário' /></button></li>
           <li>
             <button className='topnav-cart-button'>
               <i className="bi bi-cart3" aria-label='Carrinho' />

@@ -1,0 +1,56 @@
+.login-options {
+  margin-top: 10px;
+  width: 100%;
+}
+.login-options-create, .login-options-social {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-options-create-text, .login-options-social-text {
+  font-size: 14px;
+  margin: 0 auto;
+  text-align: center;
+  background: #fff;
+  padding: 2px;
+  position: relative;
+  z-index: 1;
+}
+.login-options-create-bar, .login-options-social-bar {
+  width: 100%;
+  height: 2px;
+  background: var(--ftmgold);
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: 0;
+}
+.login-options-create-button {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+}
+.login-options-social {
+  margin-top: 10px;
+  justify-content: center;
+}
+.login-options-social-buttons {
+  margin-top: 10px;
+  display: flex;
+}
+.login-options-social-button {
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--ftmgold);
+  background: unset;
+  color: var(--background);
+  font-size: 26px;
+}
+.login-options-social-button:not(:nth-of-type(1)){
+  margin-left: 15px;
+}
+.login-options-social-button:hover {
+  border-color: var(--background);
+}

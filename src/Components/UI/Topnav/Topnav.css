@@ -252,10 +252,13 @@
     display: block;
     padding: .5rem 0 .5rem 15px;
   }
-  .topnav-navlist a, .topnav-sublist a, .topnav-mobonly-menu a {
+  .topnav-navlist a, .topnav-sublist a, .topnav-mobonly-menu a, .topnav-mobonly-menu button {
     display: inline-block;
     padding: .6rem !important;
     font-size: 20px;
+    background: unset;
+    border: unset;
+    color: inherit;
   }
   .topnav-mobonly-menu {    
     transition: opacity .35s cubic-bezier(.29, .63, .44, 1);

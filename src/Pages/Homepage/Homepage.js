@@ -1,6 +1,6 @@
 import React from "react";
 import UIContainer from "Components/UI/Container/Container";
-import FinalHomepage from "Components/Homepage/Homepage";
+import FinalHomepage from "Pages/Homepage/Components/Homepage";
 
 const PageHomepage = () => {
   return(

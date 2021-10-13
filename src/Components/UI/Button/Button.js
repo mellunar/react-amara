@@ -1,7 +1,7 @@
 import React from "react";
 import './Button.css'
 
-const Button = ({children, className, component: Component, theme, ...restProps}) => {
+const Button = ({children, className, component: Component, ...restProps}) => {
   return(
     <Component className={`ui-button ${className}`} {...restProps}>{children}</Component>
   )
