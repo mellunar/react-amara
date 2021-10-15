@@ -47,9 +47,10 @@ const Topnav = () => {
 
   function windowOnScroll(){
     var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
+    if (currentScrollPos <= 60 || prevScrollpos > currentScrollPos) {
       setPageScroll("up");
-    } else {
+    }
+    else {
       setPageScroll("down");
     }
     setPrevScrollpos(currentScrollPos);

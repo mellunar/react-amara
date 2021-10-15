@@ -29,6 +29,7 @@
   top: 10px;
   left: 10px;
   z-index: 1;
+  user-select: none;
 }
 .login-form-input:focus + .login-form-label, .login-form-input:not(:placeholder-shown) + .login-form-label {
   top: -8px;

@@ -1,0 +1,9 @@
+.ui-favorite-button {
+  background: unset;
+  border: unset;
+  font-size: 24px;
+  color: var(--background);
+}
+.ui-favorite-button:is(:hover, :active), .ui-favorite-button-active {
+  color: var(--red);
+}

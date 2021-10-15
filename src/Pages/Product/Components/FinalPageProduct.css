@@ -1,0 +1,9 @@
+.product-main {
+  margin-top: 60px;
+  max-width: 1920px;
+  padding: 3vw;
+  overflow-x: hidden;
+}
+.product-page-carousel {
+  margin-top: 20px;
+}

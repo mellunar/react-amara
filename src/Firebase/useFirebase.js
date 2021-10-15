@@ -1,22 +1,25 @@
-import { useState } from "react";
-import { db, storage } from "./Firebase";
+import { useEffect, useState } from "react";
+import { db } from "./Firebase";
 
-export default function useFirebase(num){
-  const [res, setRes] = useState([]);
+export default function useFirebase(prodId,refetch){
+  const [resp, setResp] = useState([]);
+
+  useEffect(()=>{
+    fetchData();
+    // eslint-disable-next-line
+  },[refetch]);
   
   async function fetchData(){
-    await db.collection('amara')//.orderBy('timestamp', 'desc')
-    .limit(num)
+    await db.collection('amara')
+    .doc(prodId)
     .get()
-    .then((snapshot) => {
-      let arr = [];
-      snapshot.docs.map(async(doc) => {
-        arr.push({id: doc.id, data: doc.data()});
-
-      });
-      setRes(arr);
+    .then((doc) => {
+      setResp(doc.data());
+    })
+    .catch((error) => {
+      console.log(error)
     });
   };
-  fetchData();
-  return[res]
+
+  return[resp]
 };

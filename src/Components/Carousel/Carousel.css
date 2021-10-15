@@ -61,9 +61,14 @@
   text-align: center;
   font-size: 14px;
 }
+.product-carousel-price span {
+  color: var(--ftgray);
+  text-decoration: line-through;
+}
 .product-carousel-price b {
   font-weight: 600;
   font-size: 18px;
+  display: inline;
 }
 .product-slide-discount {
   position: absolute;
@@ -78,17 +83,10 @@
   border-radius: 50%;
 }
 .product-carousel-fav {
-  background: unset;
-  border: unset;
   position: absolute;
   z-index: 11;
   top: 10px;
   right: 10px;
-  font-size: 20px;
-  color: var(--background);
-}
-.product-carousel-fav:is(:hover, :active), .product-carousel-fav-active {
-  color: var(--red);
 }
 
 @media (hover: hover) {
@@ -121,8 +119,8 @@
     right: 5px;
   }
 }
-@media (min-width: 1100px){
+@media (max-width: 1099px){
   .product-carousel-fav {
-    font-size: 24px;
+    font-size: 20px;
   }
 }

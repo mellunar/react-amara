@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import './Footer.css';
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
+import logoAmara from 'Resources/amara-logo.png';
 
 const Footer = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -10,7 +11,7 @@ const Footer = () => {
   function onBlur(e){
     // eslint-disable-next-line
     const validEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-    validEmail.test(e.target.value) === true ? setValid(null) : setValid('Insira um email válido');
+    validEmail.test(e.target.value) === true ? setValid(true) : setValid('Insira um email válido');
   };
 
   return(
@@ -19,7 +20,7 @@ const Footer = () => {
         <label htmlFor='newsletter'>Receba ofertas e novidades por e-mail</label>
         <div className='ui-footer-newsletter-form'>
           <input type='email' id='newsletter' name='newsletter' className='ui-footer-input' onChange={(e)=>setUserEmail(e.target.value)} onBlur={onBlur} placeholder='Digite seu email' required />
-          <Button component='button' onClick={()=>console.log(userEmail)} disabled={valid !== 'Insira um email válido' ? false : true}>Cadastrar</Button>
+          <Button component='button' onClick={()=>console.log(userEmail)} disabled={valid === true ? false : true}>Cadastrar</Button>
         </div>
         {valid && <p className='ui-footer-newsletter-error'>{valid}</p>}
       </div>
@@ -50,7 +51,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className='ui-footer-section ui-footer-section-contacts'>
-          <img className='footer-logo' alt='logo Amara' src='https://bn02pap001files.storage.live.com/y4mW7JffflW9vxqS0MOrwClETZhfzG9h23ScafruYVOcaQleijrx9nw972NiwbtLzQFUefDVVWTHbtRQbxgACrTpKdbKr_ythZuC-1EIkj5Cr_EID5Z3UPJn3vK_S6SrmA6IoqZ20U9pUIlOy3pTzMPZVuUM-N87wnwnPkKCwnnZVFkT5lPlLEWSVz76XBF0Dso?width=233&height=60&cropmode=none' />
+          <img className='footer-logo' alt='logo Amara' src={logoAmara} />
           <address>
             Avenida Presidente Vargas, 500<br />
             Centro - Rio de Janeiro

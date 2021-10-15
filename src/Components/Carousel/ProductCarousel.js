@@ -5,7 +5,7 @@ import ProductSlide from "./ProductSlide";
 import ButtonGroup from "./ButtonGroup";
 import LoadingSlide from "./LoadingSlide";
 
-const ProductCarousel = ({heading, productArray}) => {
+const ProductCarousel = ({className, heading, productArray}) => {
   let dummy = [];
   
   for(let i=1; i<6; i++){
@@ -37,8 +37,8 @@ const ProductCarousel = ({heading, productArray}) => {
 
   return(
     <section className='product-carousel'>
-      {heading && <h2 className='product-carousel-heading'>{heading}</h2>}
-      {productArray !== undefined && <Carousel responsive={responsive} minimumTouchDrag={80} customButtonGroup={<ButtonGroup />} renderButtonGroupOutside arrows={false}>
+      {heading && <h2 className={`product-carousel-heading ${className}`}>{heading}</h2>}
+      {productArray && productArray !== undefined && <Carousel responsive={responsive} minimumTouchDrag={80} customButtonGroup={<ButtonGroup />} renderButtonGroupOutside arrows={false}>
         {productArray !== null && productArray.length > 0 ? productArray.map((slide,i) => <ProductSlide product={slide} key={i} />) : dummy.map((slide) => <LoadingSlide key={slide} onError={productArray} />)}
       </Carousel>}
     </section>
