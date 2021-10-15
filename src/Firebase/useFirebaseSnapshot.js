@@ -2,16 +2,21 @@ import { useEffect, useState } from "react";
 import { db } from "./Firebase";
 
 export default function useFirebaseSnapshot(num, cat){
-  const [resp, setResp] = useState(null);
+  const [resp, setResp] = useState([]);
 
   useEffect(()=>{
-    fetchData();
+    if(cat){
+      fetchData();
+    };
+    if(cat === 'Homepage'){
+      fetchData();
+    };
     // eslint-disable-next-line
-  },[]);
+  },[cat]);
 
   const amara = db.collection('amara')
 
-  const getData = cat ? amara.where('category', '==', cat) : amara;
+  const getData = cat && cat !== 'Homepage' ? amara.where('category', '==', cat) : amara;
   
   async function fetchData(){
     await getData

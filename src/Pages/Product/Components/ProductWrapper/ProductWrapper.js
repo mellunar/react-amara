@@ -6,6 +6,7 @@ import { LoginContext } from "Contexts/LoginContext";
 import ReactMarkdown from "react-markdown";
 import Button from "Components/UI/Button/Button";
 import FavoriteButton from "Components/UI/FavoriteButton/FavoriteButton";
+import { productStock } from "Utils/productStock";
 
 const ProductWrapper = ({product, prodId}) => {
   const [productSize, setProductSize] = useState(null);
@@ -15,7 +16,7 @@ const ProductWrapper = ({product, prodId}) => {
   const sizes = product.category === 'Calçados' ? ['34','35','36','37','38','39','40','41','42'] : ['U','PP','P','M','G','GG','XG','G1','G2','G3'];
 
   useEffect(()=>{
-    productStock();
+    setSoldOut(productStock(product));
     if(product.sizes.includes('U')){
       setProductSize('U')
     };
@@ -43,14 +44,6 @@ const ProductWrapper = ({product, prodId}) => {
 
   function changeColor(color){
     history.push(`/product/${color}`)
-  };
-
-  function productStock(){
-    let amount = 0;
-    Object.entries(product.sizeamount).forEach(([key, value]) => {
-      amount = soldOut + value
-    });
-    amount === 0 ? setSoldOut(true) : setSoldOut(false);
   };
 
   function addToCart(){
@@ -88,7 +81,7 @@ const ProductWrapper = ({product, prodId}) => {
           <button className='product-size-guide'>Tabela de medidas</button>
         </div>
         {product.sizes.length > 0 && sizesSort().map((size)=> <label key={size} className='product-size-option' title={product.sizeamount[size] === 0 ? 'esgotado' : null}>
-          <input type='radio' name='productSize' disabled={product.sizeamount[size] === 0 ? true : false} onChange={onChange} value={size} checked={size === 'U' ? true : false} />
+          <input type='radio' name='productSize' disabled={product.sizeamount[size] === 0 ? true : false} onChange={onChange} value={size} checked={size === productSize  ? true : false} />
           <span className='product-size-option-text'>{size}</span>
         </label>)}
         {submitError && <p className='product-submit-error'>{submitError}</p>}

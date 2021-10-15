@@ -61,7 +61,7 @@
   text-align: center;
   font-size: 14px;
 }
-.product-carousel-price span {
+.product-carousel-price span:not(.product-carousel-soldout) {
   color: var(--ftgray);
   text-decoration: line-through;
 }
@@ -69,6 +69,13 @@
   font-weight: 600;
   font-size: 18px;
   display: inline;
+}
+.product-carousel-soldout {
+  background: var(--background);
+  color: #fff;
+  padding: .5rem;
+  display: inline-block;
+  margin-top: 3px;
 }
 .product-slide-discount {
   position: absolute;
