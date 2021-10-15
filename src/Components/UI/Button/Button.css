@@ -18,7 +18,7 @@
 .table {
   display: table;
 }
-.ui-button-light:hover {
+.ui-button-light:hover:not(:disabled) {
   background: var(--background);
   color: #fff;
 }

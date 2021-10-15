@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
 import './ProductWrapper.css';
 import { formatter } from "Utils/PriceFormatter";
@@ -10,8 +10,17 @@ import FavoriteButton from "Components/UI/FavoriteButton/FavoriteButton";
 const ProductWrapper = ({product, prodId}) => {
   const [productSize, setProductSize] = useState(null);
   const [submitError, setSubmitError] = useState(null);
+  const [soldOut, setSoldOut] = useState(false);
   const history = useHistory();
-  const sizes =['PP','P','M','G','GG','XG','G1','G2','G3'];
+  const sizes = product.category === 'Calçados' ? ['34','35','36','37','38','39','40','41','42'] : ['U','PP','P','M','G','GG','XG','G1','G2','G3'];
+
+  useEffect(()=>{
+    productStock();
+    if(product.sizes.includes('U')){
+      setProductSize('U')
+    };
+    // eslint-disable-next-line
+  },[product]);
 
   function sizesSort(){
     let arr = [];
@@ -36,11 +45,19 @@ const ProductWrapper = ({product, prodId}) => {
     history.push(`/product/${color}`)
   };
 
+  function productStock(){
+    let amount = 0;
+    Object.entries(product.sizeamount).forEach(([key, value]) => {
+      amount = soldOut + value
+    });
+    amount === 0 ? setSoldOut(true) : setSoldOut(false);
+  };
+
   function addToCart(){
     if(productSize === null){
       return setSubmitError('Escolha um tamanho')
     };
-    let values = {productSize: productSize, color: prodId};
+    let values = {productId: prodId, productSize: productSize};
     console.log(values)
   };
 
@@ -70,13 +87,14 @@ const ProductWrapper = ({product, prodId}) => {
           <h4 className='product-form-title'>Escolha o tamanho</h4>
           <button className='product-size-guide'>Tabela de medidas</button>
         </div>
-        {sizesSort().map((size)=> <label key={size} className='product-size-option' title={product.sizeamount[size] === 0 ? 'esgotado' : null}>
-          <input type='radio' name='productSize' disabled={product.sizeamount[size] === 0 ? true : false} onChange={onChange} value={size} />
+        {product.sizes.length > 0 && sizesSort().map((size)=> <label key={size} className='product-size-option' title={product.sizeamount[size] === 0 ? 'esgotado' : null}>
+          <input type='radio' name='productSize' disabled={product.sizeamount[size] === 0 ? true : false} onChange={onChange} value={size} checked={size === 'U' ? true : false} />
           <span className='product-size-option-text'>{size}</span>
         </label>)}
         {submitError && <p className='product-submit-error'>{submitError}</p>}
-        <Button component='button' className='ui-button-light product-add-bag' onClick={()=>addToCart()}>Adicionar ao carrinho</Button>
-        <ReactMarkdown className='product-description'>{product.desc}</ReactMarkdown>
+        {soldOut === false ? <Button component='button' className='ui-button-light product-add-bag' onClick={()=>addToCart()}>Adicionar ao carrinho</Button> : 
+        <Button component='button' className='ui-button-light product-add-bag' disabled={true}>Produto esgotado</Button>}
+        <ReactMarkdown className='product-description'>{product.description}</ReactMarkdown>
       </div>
     </article>
   )

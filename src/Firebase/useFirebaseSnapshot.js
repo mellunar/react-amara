@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { db } from "./Firebase";
 
-export default function useFirebaseSnapshot(num){
+export default function useFirebaseSnapshot(num, cat){
   const [resp, setResp] = useState(null);
 
   useEffect(()=>{
     fetchData();
     // eslint-disable-next-line
   },[]);
+
+  const amara = db.collection('amara')
+
+  const getData = cat ? amara.where('category', '==', cat) : amara;
   
   async function fetchData(){
-    await db.collection('amara')
+    await getData
     .orderBy('timestamp', 'desc')
     .limit(num)
     .get()

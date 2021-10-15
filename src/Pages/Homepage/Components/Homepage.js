@@ -5,10 +5,11 @@ import MainSlider from "./Main Slider/MainSlider";
 import { MainSlides } from "./Main Slider/MainSlides";
 import ProductCarousel from "Components/Carousel/ProductCarousel";
 import HomeGrid from "./Home Grid/HomeGrid";
-//import useFirebaseSnapshot from 'Firebase/useFirebaseSnapshot';
+import useFirebaseSnapshot from 'Firebase/useFirebaseSnapshot';
 
 const FinalHomepage = () => {
-  //const [products] = useFirebaseSnapshot();
+  const [blusas] = useFirebaseSnapshot(8, 'Blusas');
+  const [acessorios] = useFirebaseSnapshot(8, 'Acessórios');
   const location = useLocation();
 
   useEffect(()=>{
@@ -33,8 +34,8 @@ const FinalHomepage = () => {
         <MainSlider source={MainSlides} />
       </header>
       <main className='page-main'>
-        <ProductCarousel heading='Lançamentos' productArray={items} />
-        <ProductCarousel heading='Acessórios' productArray={items} />
+        <ProductCarousel heading='Lançamentos' productArray={blusas} />
+        <ProductCarousel heading='Acessórios' productArray={acessorios} />
         <HomeGrid />
       </main>
     </>
