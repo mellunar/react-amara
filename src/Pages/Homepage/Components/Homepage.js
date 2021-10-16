@@ -8,13 +8,14 @@ import HomeGrid from "./Home Grid/HomeGrid";
 import useFirebaseSnapshot from 'Firebase/useFirebaseSnapshot';
 
 const FinalHomepage = () => {
-  const [blusas] = useFirebaseSnapshot(8, 'Homepage');
-  const [acessorios] = useFirebaseSnapshot(8, 'Acessórios');
+  const [lancamentos] = useFirebaseSnapshot(8, 'Homepage');
+  const [vestidos] = useFirebaseSnapshot(8, 'Vestidos');
+  const [blusas] = useFirebaseSnapshot(8, 'Blusas');
   const location = useLocation();
 
   useEffect(()=>{
     document.title = 'Amara - Página inicial'
-  },[location.pathname])
+  },[location.pathname]);
 
   return(
     <>
@@ -22,8 +23,9 @@ const FinalHomepage = () => {
         <MainSlider source={MainSlides} />
       </header>
       <main className='page-main'>
-        <ProductCarousel heading='Lançamentos' productArray={blusas} />
-        <ProductCarousel heading='Acessórios' productArray={acessorios} />
+        <ProductCarousel heading='Lançamentos' productArray={lancamentos} />
+        <ProductCarousel heading='Vestidos' productArray={vestidos} />
+        <ProductCarousel heading='Blusas' productArray={blusas} />
         <HomeGrid />
       </main>
     </>
