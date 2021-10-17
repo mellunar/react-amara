@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from "react";
 import { useLocation } from 'react-router-dom';
-//import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './FinalPageProduct.css';
 import { db } from "Firebase/Firebase";
 import ProductCarousel from "Components/Carousel/ProductCarousel";
@@ -12,14 +12,11 @@ const FinalPageProduct = ({prodId}) => {
   const [category, setCategory] = useState(null);
   const [categoria] = useFirebaseSnapshot(8, category);
   const location = useLocation();
-  //const history = useHistory();
+  const history = useHistory();
 
   useEffect(()=>{
     fetchData();
     document.title = `Amara`;
-    if(product === undefined){
-      //history.push('/404')
-    }
     // eslint-disable-next-line
   },[location.pathname]);
 
@@ -27,8 +24,16 @@ const FinalPageProduct = ({prodId}) => {
     if(product && product !== undefined){
       document.title = `${product.title} - Amara`;
       setCategory(product.category);
-    }
-  },[product])
+    };
+    if(product === undefined){
+      history.push('/')
+    };
+    // eslint-disable-next-line
+  },[product]);
+
+  if(product === undefined){
+    return null
+  };
 
   async function fetchData(){
     await db.collection('amara')
@@ -45,7 +50,7 @@ const FinalPageProduct = ({prodId}) => {
   return(
     <main className='product-main'>
       {product && product !== undefined && <ProductWrapper product={product} prodId={prodId} />}
-      {category && category !== undefined ? <ProductCarousel className='product-page-carousel' heading='Mais desta categoria' productArray={categoria} /> : 
+      {category && category !== undefined ? <ProductCarousel className='product-page-carousel' heading='Mais desta categoria' productArray={categoria} prodId={prodId} /> : 
       <ProductCarousel className='product-page-carousel' heading='Mais desta categoria' productArray={[]} />}
     </main>
   )

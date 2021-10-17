@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { db } from "./Firebase";
 
 export default function useFirebase(prodId,refetch){
-  const [resp, setResp] = useState([]);
+  const [resp, setResp] = useState({});
 
   useEffect(()=>{
     fetchData();

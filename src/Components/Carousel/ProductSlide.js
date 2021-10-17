@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import './Carousel.css';
 import { Link } from "react-router-dom";
 import { formatter } from "Utils/PriceFormatter";
-import { LoginContext } from "Contexts/LoginContext";
+import { LoginContext } from "Contexts/Contexts";
 import FavoriteButton from "Components/UI/FavoriteButton/FavoriteButton";
 import { productStock } from "Utils/productStock";
 

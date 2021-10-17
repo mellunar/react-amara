@@ -51,14 +51,14 @@
 .topnav-navlist li {
   overflow: hidden;
 }
-.topnav-navlist a:not(.topnav-sublist a), .topnav-userlist button {
+.topnav-navlist a:not(.topnav-sublist a), .topnav-userlist button, .topnav-cart-button {
   padding: 1.2rem;
   display: block;
 }
-.topnav-navlist a, .topnav-userlist button, .topnav-mobonly-menu a {
+.topnav-navlist a, .topnav-userlist button, .topnav-cart-button, .topnav-mobonly-menu a {
   color: var(--ftmgold);
 }
-.topnav-navlist a:hover, .topnav-userlist button:hover, .topnav-mobmenu-button:hover {
+.topnav-navlist a:hover, .topnav-userlist button:hover, .topnav-cart-button:hover, .topnav-mobmenu-button:hover {
   color: var(--ftlgold);
 }
 .topnav-sublist {
@@ -67,7 +67,7 @@
 .topnav-userlist {
   display: flex;
 }
-.topnav-userlist button {
+.topnav-userlist button, .topnav-cart-button {
   background: unset;
   border: unset;
   font-size: 22px;
@@ -79,6 +79,10 @@
 }
 .topnav-cart-button {
   position: relative;
+}
+.topnav-cart-icon {
+  padding-top: 2px;
+  display: block;
 }
 .topnav-cart-size {
   position: absolute;
@@ -299,7 +303,7 @@
   [data-active-sub='opened'] {
     left: 0px;
   }
-  .topnav-userlist button {
+  .topnav-userlist button, .topnav-cart-button {
     padding: .8rem;
   }
   .topnav-cart-size {

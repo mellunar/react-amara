@@ -5,12 +5,12 @@ import ProductSlide from "./ProductSlide";
 import ButtonGroup from "./ButtonGroup";
 import LoadingSlide from "./LoadingSlide";
 
-const ProductCarousel = ({className, heading, productArray}) => {
+const ProductCarousel = ({className, heading, productArray, prodId}) => {
   let dummy = [];
   
   for(let i=1; i<6; i++){
     dummy.push(i)
-  };  
+  };
 
   const responsive = {
     mobileSmall: {
@@ -39,7 +39,9 @@ const ProductCarousel = ({className, heading, productArray}) => {
     <section className='product-carousel'>
       {heading && <h2 className={`product-carousel-heading ${className}`}>{heading}</h2>}
       {productArray && productArray !== undefined && <Carousel responsive={responsive} minimumTouchDrag={80} customButtonGroup={<ButtonGroup />} renderButtonGroupOutside arrows={false}>
-        {productArray !== null && productArray.length > 0 ? productArray.map((slide,i) => <ProductSlide product={slide} key={i} />) : dummy.map((slide) => <LoadingSlide key={slide} onError={productArray} />)}
+        {productArray !== null && productArray.length > 0 ? 
+        productArray.filter((item)=>item.id !== prodId).map((slide,i) => <ProductSlide product={slide} key={i} />) : 
+        dummy.map((slide) => <LoadingSlide key={slide} onError={productArray} />)}
       </Carousel>}
     </section>
   )

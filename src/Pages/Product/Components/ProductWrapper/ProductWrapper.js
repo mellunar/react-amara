@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
 import './ProductWrapper.css';
 import { formatter } from "Utils/PriceFormatter";
-import { LoginContext } from "Contexts/LoginContext";
+import { LoginContext, CartContext } from "Contexts/Contexts";
 import ReactMarkdown from "react-markdown";
 import Button from "Components/UI/Button/Button";
 import FavoriteButton from "Components/UI/FavoriteButton/FavoriteButton";
@@ -12,11 +12,13 @@ const ProductWrapper = ({product, prodId}) => {
   const [productSize, setProductSize] = useState(null);
   const [submitError, setSubmitError] = useState(null);
   const [soldOut, setSoldOut] = useState(false);
+  const {shoppingCart, cartDispatch, setCartStatus} = useContext(CartContext);
   const history = useHistory();
   const sizes = product.category === 'Calçados' ? ['34','35','36','37','38','39','40','41','42'] : ['U','PP','P','M','G','GG','XG','G1','G2','G3'];
 
   useEffect(()=>{
     setSoldOut(productStock(product));
+    setProductSize(null);
     if(product.sizes.includes('U')){
       setProductSize('U')
     };
@@ -51,7 +53,8 @@ const ProductWrapper = ({product, prodId}) => {
       return setSubmitError('Escolha um tamanho')
     };
     let values = {productId: prodId, productSize: productSize};
-    console.log(values)
+    cartDispatch({ type: "add", data: values });
+    setCartStatus(true);
   };
 
   const actualPrice = product.discount > 0 ? product.discountPrice : product.price;
@@ -85,8 +88,8 @@ const ProductWrapper = ({product, prodId}) => {
           <span className='product-size-option-text'>{size}</span>
         </label>)}
         {submitError && <p className='product-submit-error'>{submitError}</p>}
-        {soldOut === false ? <Button component='button' className='ui-button-light product-add-bag' onClick={()=>addToCart()}>Adicionar ao carrinho</Button> : 
-        <Button component='button' className='ui-button-light product-add-bag' disabled={true}>Produto esgotado</Button>}
+        {soldOut === false && shoppingCart.length < 10 ? <Button component='button' className='ui-button-light product-add-bag' onClick={()=>addToCart()}>Adicionar ao carrinho</Button> : 
+        <Button component='button' className='ui-button-light product-add-bag' disabled={true}>{shoppingCart.length > 9 ? 'Carrinho cheio' : 'Produto esgotado'}</Button>}
         <ReactMarkdown className='product-description'>{product.description}</ReactMarkdown>
       </div>
     </article>

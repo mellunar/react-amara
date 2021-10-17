@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import './Topnav.css';
 import { NavItems } from "./Navmenu";
 import logoAmara from 'Resources/amara-logo.png';
-import { LoginContext } from "Contexts/LoginContext";
+import { LoginContext, CartContext } from "Contexts/Contexts";
+import TopCart from "Components/TopCart/TopCart";
 
 const Topnav = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -14,6 +15,7 @@ const Topnav = () => {
   const searchInput = useRef(null);
   const htmlBody = document.querySelector('body');
   const {setModalStatus} = useContext(LoginContext);
+  const {shoppingCart} = useContext(CartContext);
 
   useEffect(()=>{
     openMenu === true ? htmlBody.classList.add('mmopened') : htmlBody.classList.remove('mmopened');
@@ -25,7 +27,8 @@ const Topnav = () => {
       window.removeEventListener("resize", windowOnResize);
     }
     // eslint-disable-next-line
-  },[openMenu, openSearch])
+  },[openMenu, openSearch]);
+
   useEffect(()=>{
     setPrevScrollpos(window.pageYOffset);    
     window.addEventListener("scroll", windowOnScroll);
@@ -34,6 +37,11 @@ const Topnav = () => {
     }
     // eslint-disable-next-line
   },[prevScrollpos])
+
+  useEffect(()=>{
+    setPageScroll("up");
+    // eslint-disable-next-line
+  },[shoppingCart.length + 1]);
 
   function windowOnResize(){
     if(window.innerWidth > 1023){
@@ -62,7 +70,7 @@ const Topnav = () => {
   };
 
   return(
-    <header className='topnav' data-scroll={pageScroll}>
+    <nav className='topnav' data-scroll={pageScroll}>
       <nav className='topnav-topsection'>
         <button className='mobonly topnav-mobmenu-button' onClick={()=>{openMenu === false ? setOpenMenu(true) : setOpenMenu(false)}} aria-label='Menu' aria-expanded={openMenu === false ? 'false' : 'open'}>
           {openMenu === false ? <i className="bi bi-list" /> : <i className="bi bi-x" />}
@@ -99,10 +107,10 @@ const Topnav = () => {
           <li className='pconly'><button className='topnav-search-icon' onClick={()=>{setOpenSearch(true); searchInput.current.focus()}}><i className="bi bi-search" aria-label='Pesquisar' /></button></li>
           <li className='pconly'><button onClick={()=>openLoginModal()}><i className="bi bi-person-circle" aria-label='Usuário' /></button></li>
           <li>
-            <button className='topnav-cart-button'>
-              <i className="bi bi-cart3" aria-label='Carrinho' />
-              <span className='topnav-cart-size' aria-label={`${0} itens`}>0</span>
-            </button>
+            <Link to='/cart' className='topnav-cart-button'>
+              <i className="bi bi-cart3 topnav-cart-icon" aria-label='Carrinho' />
+              <span className='topnav-cart-size' aria-label={`${shoppingCart.length} itens`}>{shoppingCart.length < 10 ? shoppingCart.length : '9+'}</span>
+            </Link>
           </li>
         </ul>
         <div className='pconly topnav-desktop-search' data-pcsearch={openSearch === false ? 'closed' : 'opened'} onClick={(e)=>{if(e.target !== searchInput.current){setOpenSearch(false)}}}>
@@ -113,8 +121,9 @@ const Topnav = () => {
           </div>
         </div>
       </nav>
+      <TopCart scroll={pageScroll} />
       <div className='topnav-menu-opened' onClick={()=>{setOpenMenu(false)}} hidden={openMenu === false ? true : false} aria-hidden />
-    </header>
+    </nav>
   )
 };
 
