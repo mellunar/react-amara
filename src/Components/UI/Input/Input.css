@@ -1,0 +1,54 @@
+.ui-input-container {
+  width: 100%;
+  font-size: 16px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.ui-input-container ::placeholder {
+  color: transparent;
+}
+.ui-input-input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  padding: 5px;
+  border: 2px solid var(--ftmgold);
+  font-size: 16px;
+  background: transparent;
+  z-index: 2;
+}
+.ui-input-container input::-webkit-outer-spin-button,
+.ui-input-container input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.ui-input-container input[type=number] {
+  -moz-appearance: textfield;
+}
+.ui-input-input:focus {
+  border-color: var(--background);
+}
+.ui-input-label {
+  display: block;
+  transition: 300ms;
+  cursor: text;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  user-select: none;
+}
+.ui-input-input:focus + .ui-input-label, .ui-input-input:not(:placeholder-shown) + .ui-input-label {
+  top: -8px;
+  font-size: 13px;
+  font-weight: 500;
+  background: #fff;
+  padding: 1px;
+  z-index: 3;
+}
+.ui-input-error {
+  margin-top: 5px;
+  text-align: center;
+  color: var(--error);
+}

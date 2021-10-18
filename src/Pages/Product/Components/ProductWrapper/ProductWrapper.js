@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import './ProductWrapper.css';
 import { formatter } from "Utils/PriceFormatter";
 import { LoginContext, CartContext } from "Contexts/Contexts";
+import ProductImageSlider from "../ProductImageSlider/ProductImageSlider";
 import ReactMarkdown from "react-markdown";
 import Button from "Components/UI/Button/Button";
 import FavoriteButton from "Components/UI/FavoriteButton/FavoriteButton";
@@ -61,9 +62,7 @@ const ProductWrapper = ({product, prodId}) => {
 
   return(
     <article className='product-wrapper'>
-      <div className='product-image'>
-        <img alt={product.title} src={product.images[0]} />
-      </div>
+      <ProductImageSlider className='product-image' images={product.images} title={product.title} aria-hidden />
       <div className='product-info'>
         <h1 className='product-title'>{product.title}</h1>
         <FavoriteButton className='product-favorite-button' context={LoginContext} />

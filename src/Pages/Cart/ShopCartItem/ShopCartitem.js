@@ -32,16 +32,16 @@ const ShopCartItem = ({prodId, index, size}) => {
         <div className='cart-item-img'><img alt='' src={item.images[0]} /></div>
         <div className='cart-item-info'>
           <p className='cart-item-name'><Link to={`/product/${prodId}`}>{item.title}</Link></p>
-          <p>Tamanho: <b>{size}</b> {item.numberOfColors > 0 && <span>Cor : <b>{item.colors[0].name}</b></span>}</p>
+          <p>Tamanho: <b>{size}</b></p>
         </div>
-        <div className='cart-item-price'>
-          <p><b>{formatter.format(item.discount > 0 ? item.discountPrice : item.price)}</b></p>
-        </div>
-        <div className='cart-item-button-container'>
-          <button className='cart-item-button-remove' onClick={()=>cartDispatch({ type: "remove", index })}>
-            <i className="bi bi-cart-dash-fill cart-button-icon" />
-            <span>remover</span>
-          </button>
+        <div className='cart-item-info2'>
+          <p className='cart-item-price'><b>{formatter.format(item.discount > 0 ? item.discountPrice : item.price)}</b></p>
+          <div className='cart-item-button-container'>
+            <button className='cart-item-button-remove' onClick={()=>cartDispatch({ type: "remove", index })}>
+              <i className="bi bi-cart-dash-fill cart-button-icon" aria-hidden />
+              <span>remover</span>
+            </button>
+          </div>
         </div>
       </li>}
     </>

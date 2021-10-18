@@ -5,7 +5,7 @@ import slideimg3 from 'Resources/slider3.jpg';
 export const MainSlides = [
   {
     title: 'Vestido Xadrez',
-    url: '/product/1634394010984',
+    url: '1634394010984',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     off: '',
     alt: '',
@@ -14,7 +14,7 @@ export const MainSlides = [
   },
   {
     title: 'Camisa de Bolinhas',
-    url: '/product/1634394485183',
+    url: '1634394485183',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     off: '',
     alt: '',
@@ -23,7 +23,7 @@ export const MainSlides = [
   },
   {
     title: 'Blusa de Gatinho',
-    url: '/product/1634337493634',
+    url: '1634337493634',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     off: '15',
     alt: '',

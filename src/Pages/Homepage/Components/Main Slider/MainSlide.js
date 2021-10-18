@@ -14,7 +14,7 @@ const MainSlide = ({item}) => {
       </div>
       <div className='main-slide-info-container'>
         <p className='main-slide-subtitle'>{item.desc}</p>
-        <Button component={Link} to='/' className='main-slide-button' onDragStart={(e) => e.preventDefault()}>Comprar</Button>
+        <Button component={Link} to={`/product/${item.url}`} className='main-slide-button' onDragStart={(e) => e.preventDefault()}>Comprar</Button>
       </div>
       
     </article>

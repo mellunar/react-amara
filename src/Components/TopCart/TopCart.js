@@ -66,7 +66,7 @@ const TopCart = ({scroll}) => {
   };
 
   function windowOnMouseDown(event){
-    if(cartStatus && event.target !== topCart.current){setCartStatus(null)}
+    if(cartStatus && topCart.current && !topCart.current.contains(event.target)){setCartStatus(null)}
   };
 
   return(
@@ -74,7 +74,7 @@ const TopCart = ({scroll}) => {
       <ul className='topcart-list'>
         {[...shoppingCart].reverse().map((item,index) => index < 1 && <TopCartItem key={index} index={shoppingCart.map(x=>{return x.productId}).indexOf(item.productId)} prodId={item.productId} size={item.productSize} />)}
       </ul>
-      <Link className='topcart-link' to='/'>Ir para o carrinho</Link>
+      <Link className='topcart-link' to='/cart'>Ir para o carrinho</Link>
     </div>
   )
 };
