@@ -4,6 +4,7 @@ import './PageShoppingCart.css';
 import ShopCartList from "./ShopCartList";
 
 const PageShoppingCart = () => {
+  document.title = 'Carrinho de compras - Amara'
 
   return(
     <UIContainer>

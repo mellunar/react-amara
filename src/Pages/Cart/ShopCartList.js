@@ -8,8 +8,8 @@ const ShopCartList = ({totalValue}) => {
 
   return(
     <ul className='cart-content'>
-      <li className='cart-empty'>O carrinho está vazio</li>
-      {shoppingCart.map((item, index)=> <ShopCartItem key={index} prodId={item.productId} index={index} size={item.productSize} />)}
+      {shoppingCart.length === 0 && <li className='cart-empty'>O carrinho está vazio</li>}
+      {shoppingCart.length > 0 && shoppingCart.map((item, index)=> <ShopCartItem key={index} prodId={item.productId} index={index} size={item.productSize} />)}
     </ul>
   )
 };
