@@ -30,7 +30,7 @@
   margin-right: 10px;
 }
 .product-price span:not(.product-price-discount) {
-  color: var(--ftgray);
+  color: var(--ftdgray);
   text-decoration: line-through;
 }
 .product-price-final {
@@ -117,8 +117,8 @@
 }
 .product-size-option input:disabled ~ .product-size-option-text {
   background: transparent;
-  color: var(--ftgray);
-  border-color: var(--ftgray);
+  color: var(--ftdgray);
+  border-color: var(--ftdgray);
 }
 .product-size-option:hover .product-size-option-text, .product-size-option input:checked ~ .product-size-option-text {
   background: var(--background);

@@ -62,7 +62,7 @@
   font-size: 14px;
 }
 .product-carousel-price span:not(.product-carousel-soldout) {
-  color: var(--ftgray);
+  color: var(--ftdgray);
   text-decoration: line-through;
 }
 .product-carousel-price b {
